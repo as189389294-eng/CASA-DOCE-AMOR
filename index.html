@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Casa Doce Amor — Croatá CE</title><meta name="description" content="Bolos e doces da Casa Doce Amor em Croatá - CE.">
+<style>
+:root{--bg:#fff9f5;--card:#fff;--text:#3d2925;--muted:#806a63;--pink:#c86f7c;--pink2:#f7dce0;--line:#eedbd5}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text)}
+header{position:sticky;top:0;z-index:5;background:#fff9f5ee;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1100px;margin:auto;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}.logo{font-size:23px;font-weight:900}.logo span{color:var(--pink)}
+nav a{margin-left:20px;color:var(--text);font-weight:700;text-decoration:none}
+.hero{max-width:1100px;margin:auto;padding:65px 20px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.tag{display:inline-block;background:var(--pink2);color:#9e4e5b;padding:8px 13px;border-radius:30px;font-weight:800}
+h1{font-size:clamp(42px,7vw,70px);line-height:.98;margin:17px 0}.hero p{font-size:18px;line-height:1.65;color:var(--muted)}
+.btn{display:inline-block;padding:14px 19px;border-radius:12px;text-decoration:none;font-weight:850;margin-top:15px}.primary{background:var(--pink);color:#fff}
+.hero-art{min-height:350px;border-radius:30px;background:linear-gradient(145deg,#f3c4cc,#f6dfb9);display:grid;place-items:center;font-size:105px}
+section{max-width:1100px;margin:auto;padding:48px 20px}.title{text-align:center;margin-bottom:28px}.title h2{font-size:34px}.title p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.product{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}.pic{height:175px;background:linear-gradient(135deg,#f8d8d5,#f1e0c2);display:grid;place-items:center;font-size:68px}.pic img{width:100%;height:100%;object-fit:cover}.body{padding:18px}.body h3{margin:0 0 7px}.body p{color:var(--muted);line-height:1.5}.price{font-size:19px;font-weight:900;color:var(--pink);margin-top:12px}.stock{font-size:13px;color:#4d875b;margin-top:5px}.sold{color:#9b5149}
+.about{background:#f8e9e5;border-radius:25px;padding:34px}.about p{color:#6f5953;line-height:1.7}
+.contact{background:#3d2925;color:#fff;border-radius:25px;text-align:center;padding:40px}.contact p{color:#eadbd6}.pix{display:inline-block;background:#fff;color:#3d2925;padding:12px 15px;border-radius:10px;margin:10px;font-weight:800}
+footer{text-align:center;color:#8b746d;padding:28px;border-top:1px solid var(--line)}.empty{text-align:center;grid-column:1/-1;color:var(--muted)}
+@media(max-width:750px){nav{display:none}.hero{grid-template-columns:1fr}.hero-art{min-height:260px}.grid{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="nav"><div class="logo">Casa <span>Doce Amor</span> 🍰</div><nav><a href="#cardapio">Cardápio</a><a href="#sobre">Sobre</a><a href="#contato">Contato</a></nav></div></header>
+<main><section class="hero"><div><span class="tag">🍰 Bolos e doces • Croatá - CE</span><h1>Feito com amor, do jeitinho que você gosta.</h1><p>Encomende bolos e doces para deixar aniversários, festas e momentos especiais ainda mais gostosos.</p><a class="btn primary" href="https://wa.me/5588993378148?text=Olá!%20Vim%20pelo%20site%20da%20Casa%20Doce%20Amor%20e%20quero%20fazer%20um%20pedido.">💬 Pedir pelo WhatsApp</a></div><div class="hero-art">🎂🍓</div></section>
+<section id="cardapio"><div class="title"><h2>Nosso cardápio</h2><p>Disponibilidade e preços atualizados pela loja.</p></div><div id="products" class="grid"><div class="empty">Carregando cardápio...</div></div></section>
+<section id="sobre"><div class="about"><h2>❤️ Casa Doce Amor</h2><p>Uma loja de bolos e doces em Croatá - CE, preparada para adoçar seus momentos. Consulte o cardápio e faça sua encomenda pelo WhatsApp.</p></div></section>
+<section id="contato"><div class="contact"><h2>Faça sua encomenda</h2><p>Fale conosco pelo WhatsApp ou use nossa chave PIX.</p><div class="pix">PIX: 88993378148</div><br><a class="btn primary" href="https://wa.me/5588993378148?text=Olá!%20Quero%20fazer%20uma%20encomenda.">Chamar no WhatsApp</a></div></section></main>
+<footer>© 2026 Casa Doce Amor • Croatá - CE</footer>
+<script>
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+async function load(){try{let r=await fetch("/api/products");let p=await r.json();let el=document.querySelector("#products");if(!p.length){el.innerHTML='<div class="empty">Cardápio em atualização. Chame no WhatsApp para consultar.</div>';return}el.innerHTML=p.map(x=>`<article class="product"><div class="pic">${x.image_url?`<img src="${esc(x.image_url)}" alt="${esc(x.name)}">`:(x.emoji||"🎂")}</div><div class="body"><h3>${esc(x.name)}</h3><p>${esc(x.description||"Produto artesanal da Casa Doce Amor.")}</p><div class="price">R$ ${Number(x.price).toFixed(2).replace(".",",")}</div><div class="stock ${x.stock>0?"":"sold"}">${x.stock>0?"🟢 "+x.stock+" disponível(is)":"🔴 Esgotado"}</div></div></article>`).join("")}catch(e){document.querySelector("#products").innerHTML='<div class="empty">Não foi possível carregar o cardápio agora.</div>'}}load();
+</script></body></html>

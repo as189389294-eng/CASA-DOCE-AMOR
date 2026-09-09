@@ -1,0 +1,7 @@
+name = "casa-doce-amor"
+compatibility_date = "2026-09-09"
+pages_build_output_dir = "."
+[[d1_databases]]
+binding = "DB"
+database_name = "casa-doce-amor-db"
+database_id = "COLOQUE_O_DATABASE_ID_AQUI"
