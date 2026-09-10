@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casa Doce Amor — Confeitaria Artesanal</title>
+<meta name="description" content="Casa Doce Amor — bolos, doces, kits, tortas e sobremesas feitos com amor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,600&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#d81b60;--pink2:#ed3d7d;--wine:#8e1748;--cream:#fff9f6;
+  --soft:#ffe4e7;--text:#5f1837;--muted:#7d6870;--white:#fff;
+  --shadow:0 12px 35px rgba(110,25,60,.10);--radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:#fffaf8;color:var(--text)}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.container{width:min(1110px,92%);margin:auto}
+
+/* header */
+.topbar{height:64px;background:#fff;border-bottom:1px solid #f5dce2;display:flex;align-items:center;position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;gap:28px;width:100%}
+.logo{display:flex;align-items:center;gap:9px;margin-right:15px}
+.logo-icon{font-size:33px;line-height:1}
+.logo strong{font-family:"Pacifico",cursive;color:var(--wine);font-size:21px;font-weight:400}
+.logo small{display:block;font-size:9px;color:#a86a82;letter-spacing:.3px;margin-top:-3px}
+.menu{display:flex;gap:26px;font-size:12px;color:#74304d;align-items:center}
+.menu a{padding:9px 4px}
+.menu a.active,.menu a:hover{color:#fff;background:var(--pink);border-radius:18px;padding:9px 17px}
+.search{margin-left:auto;display:flex;align-items:center;border:1px solid #efcfd8;border-radius:25px;width:230px;height:38px;padding:0 13px;color:#a67989}
+.search input{border:0;outline:0;width:100%;font-size:12px;background:transparent;color:var(--text)}
+.actions{display:flex;gap:15px;font-size:21px;align-items:center}
+.icon-btn{border:0;background:none;cursor:pointer;position:relative;color:var(--wine)}
+.badge{position:absolute;right:-7px;top:-8px;background:var(--pink);color:#fff;border-radius:50%;font-size:9px;width:17px;height:17px;display:grid;place-items:center}
+
+/* hero */
+.hero{min-height:335px;background:
+linear-gradient(90deg,rgba(255,224,216,.97) 0%,rgba(255,235,229,.86) 37%,rgba(255,235,229,.12) 66%),
+url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1800&q=88") center/cover;
+position:relative;overflow:hidden}
+.hero-content{padding:48px 0 43px;max-width:570px}
+.kicker{font-weight:700;letter-spacing:2.2px;font-size:14px;color:#8e1748}
+.script{font-family:"Pacifico",cursive;color:#72123d;font-size:43px;line-height:1.2;margin:6px 0 13px}
+.heart-line{color:var(--pink);font-size:26px;margin-left:150px}
+.hero h3{font-family:"Playfair Display",serif;font-size:15px;margin:8px 0;color:#6f1539}
+.hero p{font-size:12px;line-height:1.65;color:#6e555f;max-width:385px}
+.cta{display:inline-flex;align-items:center;gap:12px;margin-top:17px;background:var(--pink);color:#fff;padding:13px 22px;border-radius:25px;font-size:13px;font-weight:700;box-shadow:0 8px 20px #d81b6030;border:0;cursor:pointer}
+.hero-dots{position:absolute;bottom:13px;left:50%;display:flex;gap:8px}
+.hero-dots span{width:9px;height:9px;border-radius:50%;border:1px solid #fff;background:transparent}
+.hero-dots span.active{background:#fff}
+
+/* categories */
+.categories{background:#fff;padding:24px 0 21px;border-bottom:1px solid #f4e2e5}
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr)}
+.cat{display:flex;flex-direction:column;align-items:center;text-align:center;padding:4px 12px;border-right:1px solid #f2e3e6;cursor:pointer}
+.cat:last-child{border:0}
+.cat-icon{width:57px;height:57px;border-radius:50%;background:#ffe0e5;display:grid;place-items:center;font-size:26px;margin-bottom:7px}
+.cat b{font-size:13px}
+.cat small{font-size:10px;color:#7d6b71;line-height:1.4;margin-top:5px}
+
+/* products */
+.products{padding:31px 0 25px}
+.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:19px}
+.section-title{font-family:"Pacifico",cursive;font-size:25px;color:#7c1642}
+.section-title span{font-family:"DM Sans";color:var(--pink);font-size:25px;margin-right:8px}
+.link-btn{border:0;background:var(--pink);color:#fff;border-radius:20px;padding:9px 16px;font-size:11px;font-weight:700;cursor:pointer}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:17px}
+.card{background:#fff;border-radius:10px;box-shadow:var(--shadow);overflow:hidden;border:1px solid #f7e9eb;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 35px rgba(110,25,60,.14)}
+.card-img{height:128px;position:relative;overflow:hidden}
+.card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:.35s}
+.card:hover img{transform:scale(1.04)}
+.tag{position:absolute;top:9px;left:9px;background:var(--pink);color:#fff;border-radius:12px;padding:5px 9px;font-size:9px;font-weight:700}
+.card-body{padding:11px}
+.card h3{font-size:12px;margin-bottom:5px}
+.card p{font-size:9.5px;line-height:1.4;color:#8a777e;min-height:28px}
+.price{font-size:12px;color:var(--pink);font-weight:800;margin:9px 0}
+.add{width:100%;border:0;background:var(--pink);color:#fff;border-radius:18px;height:30px;font-size:10px;font-weight:700;cursor:pointer}
+.add:hover{background:var(--wine)}
+
+/* instagram */
+.insta{background:#ffd9dd;padding:17px 0}
+.insta-row{display:grid;grid-template-columns:280px 1fr;gap:25px;align-items:center}
+.insta-copy h2{font-family:"Pacifico";font-weight:400;font-size:24px}
+.insta-copy p{font-size:10px;color:#795965;margin:5px 0 10px;line-height:1.45}
+.insta-btn{background:var(--pink);color:#fff;border:0;border-radius:17px;padding:8px 14px;font-size:10px;font-weight:700}
+.insta-pics{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.insta-pics img{width:100%;height:88px;object-fit:cover;border-radius:9px}
+
+/* benefits/footer */
+.benefits{background:#fff;padding:18px 0}
+.benefit-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.benefit{display:flex;gap:12px;align-items:center;padding:0 22px;border-right:1px solid #f2e3e6}
+.benefit:last-child{border:0}
+.benefit .bi{font-size:24px;color:var(--pink)}
+.benefit b{font-size:10px}.benefit small{display:block;color:#8b747d;font-size:9px;margin-top:3px}
+footer{background:linear-gradient(110deg,#a91850,#78123d);color:#fff;padding:19px 0 15px}
+.footer-top{display:flex;align-items:center;justify-content:space-between}
+.footer-logo strong{font-family:"Pacifico";font-size:19px;font-weight:400}
+.footer-logo small{display:block;font-size:8px;opacity:.8}
+.footer-links{display:flex;gap:24px;font-size:10px}
+.social{display:flex;gap:17px;font-size:17px}
+.copyright{text-align:center;font-size:8px;opacity:.85;margin-top:17px}
+.whatsapp{position:fixed;right:20px;bottom:20px;width:53px;height:53px;border-radius:50%;background:#16c767;color:#fff;display:grid;place-items:center;font-size:27px;z-index:60;box-shadow:0 8px 25px #0002;cursor:pointer}
+.top{position:fixed;right:20px;bottom:83px;width:34px;height:34px;border:0;border-radius:50%;background:#8e1748;color:#fff;cursor:pointer;z-index:60}
+
+/* cart */
+.cart-panel{position:fixed;right:-390px;top:0;width:min(390px,92vw);height:100vh;background:#fff;z-index:100;box-shadow:-15px 0 40px #0002;transition:.3s;padding:22px;display:flex;flex-direction:column}
+.cart-panel.open{right:0}
+.cart-head{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f0dfe3;padding-bottom:15px}
+.cart-head h2{font-family:"Pacifico";font-weight:400}
+.close{border:0;background:none;font-size:24px;cursor:pointer}
+.cart-items{flex:1;overflow:auto;padding:10px 0}
+.cart-item{display:grid;grid-template-columns:65px 1fr auto;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid #f3e7e9}
+.cart-item img{width:65px;height:55px;object-fit:cover;border-radius:8px}
+.cart-item h4{font-size:11px}.cart-item small{font-size:10px;color:#888}
+.qty{display:flex;gap:7px;align-items:center;margin-top:6px}
+.qty button{width:22px;height:22px;border:1px solid #edcbd4;background:#fff;border-radius:50%;cursor:pointer}
+.cart-total{border-top:1px solid #f0dfe3;padding-top:15px}
+.total-row{display:flex;justify-content:space-between;font-weight:800;margin-bottom:13px}
+.checkout{width:100%;border:0;background:#16b95d;color:#fff;padding:13px;border-radius:22px;font-weight:800;cursor:pointer}
+.overlay{display:none;position:fixed;inset:0;background:#0006;z-index:90}.overlay.show{display:block}
+.empty{text-align:center;color:#977f87;padding:50px 15px;font-size:13px}
+
+/* mobile */
+.mobile-menu{display:none}
+@media(max-width:900px){
+  .menu{display:none}.mobile-menu{display:block;border:0;background:none;font-size:23px;color:var(--wine)}
+  .search{width:180px}
+  .cat-grid{grid-template-columns:repeat(3,1fr);gap:15px}
+  .cat{border:0}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .insta-row{grid-template-columns:1fr}.insta-pics img{height:110px}
+}
+@media(max-width:600px){
+  .topbar{height:58px}.nav{gap:10px}.logo{margin-right:0}.logo strong{font-size:17px}.logo-icon{font-size:27px}
+  .search{display:none}.actions{margin-left:auto}
+  .hero{min-height:390px;background:linear-gradient(90deg,rgba(255,231,224,.98) 0%,rgba(255,231,224,.82) 56%,rgba(255,231,224,.1)),url("https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=85") 62%/cover}
+  .hero-content{padding-top:45px}.script{font-size:35px}.heart-line{margin-left:120px}
+  .cat-grid{grid-template-columns:repeat(3,1fr);gap:7px}.cat{padding:3px}.cat-icon{width:48px;height:48px;font-size:22px}.cat b{font-size:11px}.cat small{font-size:8px}
+  .products{padding-top:25px}.section-title{font-size:21px}.link-btn{font-size:9px}
+  .product-grid{grid-template-columns:1fr 1fr;gap:10px}.card-img{height:120px}.card-body{padding:9px}.card p{font-size:8.5px}.card h3{font-size:10px}.price{font-size:11px}
+  .benefit-grid{grid-template-columns:1fr 1fr;gap:18px}.benefit{border:0;padding:0 5px}
+  .footer-top{gap:15px;flex-wrap:wrap}.footer-links{display:none}
+  .insta-pics{grid-template-columns:repeat(5,1fr);gap:5px}.insta-pics img{height:65px}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <button class="mobile-menu" onclick="toggleMobile()">☰</button>
+    <a class="logo" href="#inicio">
+      <span class="logo-icon">🧁</span>
+      <span><strong>Casa Doce Amor</strong><small>Confeitaria Artesanal</small></span>
+    </a>
+    <nav class="menu" id="menu">
+      <a class="active" href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#categorias">Categorias</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <div class="search">⌕ <input id="search" placeholder="Buscar produtos..." oninput="renderProducts()"></div>
+    <div class="actions">
+      <button class="icon-btn" aria-label="Perfil">♙</button>
+      <button class="icon-btn" onclick="openCart()" aria-label="Carrinho">🛒<span class="badge" id="badge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="container hero-content">
+    <div class="kicker">BEM-VINDO À</div>
+    <div class="script">Casa Doce Amor</div>
+    <div class="heart-line">♡</div>
+    <h3>Bolos, doces e muito amor em cada mordida!</h3>
+    <p>Aqui, cada doce é feito com ingredientes selecionados, muito carinho e o verdadeiro sabor da felicidade.</p>
+    <button class="cta" onclick="document.querySelector('#produtos').scrollIntoView()">🍰 &nbsp; Ver Produtos &nbsp; →</button>
+  </div>
+  <div class="hero-dots"><span class="active"></span><span></span><span></span><span></span></div>
+</section>
+
+<section class="categories" id="categorias">
+  <div class="container cat-grid">
+    <div class="cat" onclick="filterCat('Bolos')"><div class="cat-icon">🎂</div><b>Bolos</b><small>Diversos tamanhos<br>e sabores</small></div>
+    <div class="cat" onclick="filterCat('Doces')"><div class="cat-icon">🧁</div><b>Doces</b><small>Brigadeiros, beijinhos<br>e muito mais</small></div>
+    <div class="cat" onclick="filterCat('Kits')"><div class="cat-icon">🎁</div><b>Kits</b><small>Presentes especiais<br>para quem você ama</small></div>
+    <div class="cat" onclick="filterCat('Tortas')"><div class="cat-icon">🍰</div><b>Tortas</b><small>Recheios incríveis<br>e muito sabor</small></div>
+    <div class="cat" onclick="filterCat('Sobremesas')"><div class="cat-icon">♡</div><b>Sobremesas</b><small>Doces que<br>conquistam</small></div>
+    <div class="cat" onclick="filterCat('Todos')"><div class="cat-icon">★</div><b>Mais</b><small>Veja todos os<br>produtos</small></div>
+  </div>
+</section>
+
+<section class="products" id="produtos">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="section-title"><span>♡</span>Produtos em Destaque</h2>
+      <button class="link-btn" onclick="filterCat('Todos')">Ver todos os produtos →</button>
+    </div>
+    <div class="product-grid" id="productGrid"></div>
+  </div>
+</section>
+
+<section class="insta" id="sobre">
+  <div class="container insta-row">
+    <div class="insta-copy">
+      <h2>◎ Nosso Instagram</h2>
+      <p>Acompanhe nosso dia a dia, novidades e muitos doces incríveis!</p>
+      <button class="insta-btn" onclick="window.open('https://instagram.com','_blank')">◎ &nbsp; Seguir no Instagram</button>
+    </div>
+    <div class="insta-pics">
+      <img src="https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=500&q=80">
+      <img src="https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=500&q=80">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80">
+      <img src="https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=500&q=80">
+      <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=500&q=80">
+    </div>
+  </div>
+</section>
+
+<section class="benefits" id="contato">
+  <div class="container benefit-grid">
+    <div class="benefit"><div class="bi">◷</div><div><b>Horário de Funcionamento</b><small>Segunda a Sábado: 08h às 20h<br>Domingo: 08h às 14h</small></div></div>
+    <div class="benefit"><div class="bi">♧</div><div><b>Entrega Rápida</b><small>Levamos até você com todo<br>carinho!</small></div></div>
+    <div class="benefit"><div class="bi">♢</div><div><b>Pagamento Seguro</b><small>Pix, Cartão e Dinheiro</small></div></div>
+    <div class="benefit"><div class="bi">♡</div><div><b>Qualidade Garantida</b><small>Ingredientes selecionados<br>e muito amor!</small></div></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-logo"><strong>🧁 Casa Doce Amor</strong><small>Confeitaria Artesanal</small></div>
+      <div class="footer-links"><a href="#inicio">Início</a><a href="#produtos">Produtos</a><a href="#categorias">Categorias</a><a href="#sobre">Sobre Nós</a><a href="#contato">Contato</a></div>
+      <div class="social">◎ &nbsp; ◉ &nbsp; ♪</div>
+    </div>
+    <div class="copyright">© 2025 Casa Doce Amor. Todos os direitos reservados. Feito com ♥ para adoçar seus momentos!</div>
+  </div>
+</footer>
+
+<button class="top" onclick="scrollTo({top:0,behavior:'smooth'})">⌃</button>
+<button class="whatsapp" onclick="whats()">◔</button>
+
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+<aside class="cart-panel" id="cart">
+  <div class="cart-head"><h2>Seu carrinho 🛒</h2><button class="close" onclick="closeCart()">×</button></div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-total"><div class="total-row"><span>Total</span><span id="total">R$ 0,00</span></div><button class="checkout" onclick="checkout()">Finalizar pelo WhatsApp</button></div>
+</aside>
+
+<script>
+const products=[
+ {id:1,name:"Bolo de Chocolate",cat:"Bolos",price:59.90,tag:"Mais Vendido",img:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=85",desc:"Massa fofinha com recheio de brigadeiro e cobertura de chocolate."},
+ {id:2,name:"Caixa de Brigadeiros",cat:"Doces",price:24.90,tag:"",img:"https://images.unsplash.com/photo-1575377427642-087cf684f29d?auto=format&fit=crop&w=700&q=85",desc:"12 brigadeiros com sabores variados e irresistíveis."},
+ {id:3,name:"Bolo de Morango",cat:"Bolos",price:64.90,tag:"",img:"https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=700&q=85",desc:"Massa branca com recheio de morango e chantilly."},
+ {id:4,name:"Kit Amor",cat:"Kits",price:19.90,tag:"Lançamento",img:"https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=700&q=85",desc:"1 fatia de bolo + 1 bebida + 1 doce."},
+ {id:5,name:"Torta de Morango",cat:"Tortas",price:54.90,tag:"",img:"https://images.unsplash.com/photo-1571115177098-24ec42ed204d?auto=format&fit=crop&w=700&q=85",desc:"Creme delicado, morangos frescos e base crocante."},
+ {id:6,name:"Beijinhos",cat:"Doces",price:22.90,tag:"",img:"https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&w=700&q=85",desc:"Docinhos artesanais de coco feitos na hora."},
+ {id:7,name:"Kit Café da Tarde",cat:"Kits",price:39.90,tag:"",img:"https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=85",desc:"Seleção especial de doces para compartilhar."},
+ {id:8,name:"Pavê Especial",cat:"Sobremesas",price:18.90,tag:"",img:"https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=700&q=85",desc:"Camadas cremosas com chocolate e biscoito."}
+];
+let category="Todos",cart=JSON.parse(localStorage.getItem("cda-cart")||"[]");
+
+function money(v){return v.toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+function renderProducts(){
+ const q=document.querySelector("#search").value.toLowerCase();
+ const list=products.filter(p=>(category==="Todos"||p.cat===category)&&(!q||p.name.toLowerCase().includes(q)||p.cat.toLowerCase().includes(q)));
+ document.querySelector("#productGrid").innerHTML=list.map(p=>`
+ <article class="card">
+  <div class="card-img">${p.tag?`<span class="tag">${p.tag}</span>`:""}<img src="${p.img}" alt="${p.name}" loading="lazy"></div>
+  <div class="card-body"><h3>${p.name}</h3><p>${p.desc}</p><div class="price">${money(p.price)}</div><button class="add" onclick="add(${p.id})">🛒 &nbsp; Adicionar ao carrinho</button></div>
+ </article>`).join("")||'<div class="empty" style="grid-column:1/-1">Nenhum produto encontrado 💗</div>';
+}
+function filterCat(c){category=c;renderProducts();document.querySelector("#produtos").scrollIntoView({behavior:"smooth"})}
+function add(id){const x=cart.find(i=>i.id===id);x?x.qty++:cart.push({id,qty:1});save();openCart()}
+function save(){localStorage.setItem("cda-cart",JSON.stringify(cart));renderCart()}
+function renderCart(){
+ const el=document.querySelector("#cartItems");document.querySelector("#badge").textContent=cart.reduce((s,i)=>s+i.qty,0);
+ if(!cart.length){el.innerHTML='<div class="empty">Seu carrinho está vazio.<br>Adicione um docinho 💕</div>';document.querySelector("#total").textContent=money(0);return}
+ el.innerHTML=cart.map(i=>{let p=products.find(x=>x.id===i.id);return `<div class="cart-item"><img src="${p.img}"><div><h4>${p.name}</h4><small>${money(p.price)}</small><div class="qty"><button onclick="change(${p.id},-1)">−</button><span>${i.qty}</span><button onclick="change(${p.id},1)">+</button></div></div><b>${money(p.price*i.qty)}</b></div>`}).join("");
+ document.querySelector("#total").textContent=money(cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0));
+}
+function change(id,d){let x=cart.find(i=>i.id===id);if(!x)return;x.qty+=d;if(x.qty<=0)cart=cart.filter(i=>i.id!==id);save()}
+function openCart(){document.querySelector("#cart").classList.add("open");document.querySelector("#overlay").classList.add("show");renderCart()}
+function closeCart(){document.querySelector("#cart").classList.remove("open");document.querySelector("#overlay").classList.remove("show")}
+function checkout(){
+ if(!cart.length)return;
+ const lines=cart.map(i=>{let p=products.find(x=>x.id===i.id);return `${i.qty}x ${p.name} — ${money(p.price*i.qty)}`}).join("%0A");
+ const total=cart.reduce((s,i)=>s+products.find(p=>p.id===i.id).price*i.qty,0);
+ window.open(`https://wa.me/5500000000000?text=Olá! Quero fazer um pedido:%0A${lines}%0A%0ATotal: ${money(total)}`,"_blank");
+}
+function whats(){window.open("https://wa.me/5500000000000?text=Olá! Vim pelo site da Casa Doce Amor 💕","_blank")}
+function toggleMobile(){document.querySelector("#menu").style.display=document.querySelector("#menu").style.display==="flex"?"":"flex"}
+renderProducts();renderCart();
+</script>
+</body>
+</html>
