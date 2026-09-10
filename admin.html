@@ -19,10 +19,28 @@ function render(){$("list").innerHTML=products.map((p,i)=>`<div class="item">
 <div><label>Emoji</label><input value="${esc(p.emoji||"🎂")}" id="e${i}"></div>
 <div><button onclick="save(${i})">Salvar</button><button class="danger" onclick="del(${i})">Excluir</button></div>
 <div class="full"><label>Descrição</label><textarea id="d${i}" rows="2">${esc(p.description||"")}</textarea></div>
-<div class="full"><label>URL da foto (opcional)</label><input value="${esc(p.image_url||"")}" id="i${i}" placeholder="https://..."></div>
+<div class="full"><label>Foto do produto</label><input type="file" accept="image/*" id="i${i}" onchange="preview(${i})"><small class="muted">Escolha uma foto do celular ou PC. Ela será reduzida automaticamente para o site.</small><div id="pv${i}" style="margin-top:8px">${p.image_url?`<img src="${esc(p.image_url)}" alt="" style="width:120px;height:90px;object-fit:cover;border-radius:10px;border:1px solid #eedbd5">`:''}</div></div>
 </div>`).join("")}
-async function save(i){let p=products[i];let body={name:$("n"+i).value,price:Number($("p"+i).value),stock:Number($("s"+i).value),emoji:$("e"+i).value,description:$("d"+i).value,image_url:$("i"+i).value};let r=await fetch("/api/products/"+p.id,{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify(body)});if(r.ok){await load();alert("Salvo!")}else alert("Erro ao salvar.")}
+async function compressImage(file){
+  return new Promise((resolve,reject)=>{
+    const img=new Image(), reader=new FileReader();
+    reader.onload=()=>{img.onload=()=>{
+      const max=900;let w=img.width,h=img.height;
+      if(w>max||h>max){const scale=Math.min(max/w,max/h);w=Math.round(w*scale);h=Math.round(h*scale)}
+      const c=document.createElement("canvas");c.width=w;c.height=h;const ctx=c.getContext("2d");ctx.drawImage(img,0,0,w,h);
+      let q=.82, data=c.toDataURL("image/webp",q);
+      while(data.length>180000&&q>.45){q-=.07;data=c.toDataURL("image/webp",q)}
+      resolve(data);
+    };img.onerror=reject;img.src=reader.result};reader.onerror=reject;reader.readAsDataURL(file);
+  });
+}
+async function preview(i){const f=$("i"+i).files[0];if(!f)return;try{const data=await compressImage(f);$("pv"+i).innerHTML=`<img src="${data}" alt="Prévia" style="width:120px;height:90px;object-fit:cover;border-radius:10px;border:1px solid #eedbd5">`;$("i"+i).dataset.image=data}catch(e){alert("Não foi possível preparar a foto.")}}
+async function save(i){let p=products[i];let image=p.image_url||"";const file=$("i"+i).files[0];if(file){try{image=await compressImage(file)}catch(e){alert("Não foi possível preparar a foto.");return}}
+  let body={name:$("n"+i).value,price:Number($("p"+i).value),stock:Number($("s"+i).value),emoji:$("e"+i).value,description:$("d"+i).value,image_url:image};
+  let r=await fetch("/api/products/"+p.id,{method:"PUT",headers:{"content-type":"application/json"},body:JSON.stringify(body)});
+  if(r.ok){await load();alert("Salvo!")}else alert("Erro ao salvar. Atualize a página e tente novamente.")
+}
 async function add(){let r=await fetch("/api/products",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({name:"Novo produto",price:0,stock:0,emoji:"🎂",description:"",image_url:""})});if(r.ok)load();else alert("Erro ao adicionar.")}
-async function del(i){if(!confirm("Excluir este produto?"))return;let r=await fetch("/api/products/"+products[i].id,{method:"DELETE"});if(r.ok)load();else alert("Erro ao excluir.")}
+async function del(i){if(!confirm("Tem certeza que deseja excluir este produto?"))return;let r=await fetch("/api/products/"+products[i].id,{method:"DELETE"});if(r.ok){await load();alert("Produto excluído!")}else alert("Erro ao excluir. Atualize a página e tente novamente.")}
 async function logout(){await fetch("/api/logout",{method:"POST"});location.reload()}
 </script></body></html>
